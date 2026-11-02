@@ -1,0 +1,20 @@
+import Link from "next/link";
+import { ArrowUpRight, BriefcaseBusiness, HeartHandshake, Sparkles } from "lucide-react";
+
+const openings = [
+    { title: "Primary School Teacher", type: "Full-time · Wyra", detail: "Create joyful, foundational learning experiences for young learners." },
+    { title: "School Counsellor", type: "Full-time · Wyra", detail: "Support student wellbeing and help every learner feel seen." },
+    { title: "Activities Coordinator", type: "Full-time · Wyra", detail: "Shape clubs, events, and experiences beyond the classroom." },
+];
+
+export default function CareersPage() {
+    return (
+        <main className="min-h-screen bg-transparent px-4 py-10 text-white sm:px-8">
+            <div className="mx-auto max-w-7xl">
+                <section className="relative overflow-hidden rounded-3xl border border-emerald-200/10 bg-gradient-to-br from-emerald-400/15 via-slate-950/35 to-sky-400/10 p-7 sm:p-12"><div className="relative z-10 max-w-2xl"><p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300">Join New Little Flower EM School</p><h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">Build the future of learning with us.</h1><p className="mt-5 text-base leading-7 text-slate-300">We are looking for thoughtful educators and curious makers who believe school should help every child find their confidence and voice.</p><a href="mailto:newlittleflower1@gmail.com?subject=Career%20application" className="mt-7 inline-flex items-center gap-2 rounded-xl bg-emerald-400 px-5 py-3 text-sm font-semibold text-[#082019] transition hover:bg-emerald-300">Send your profile <ArrowUpRight size={16} /></a></div><Sparkles className="absolute -right-5 -top-5 h-48 w-48 text-emerald-300/10" /></section>
+                <div className="mt-10 grid gap-5 md:grid-cols-3"><div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5"><HeartHandshake className="text-emerald-300" size={22} /><h2 className="mt-4 font-semibold text-white">People first</h2><p className="mt-2 text-sm leading-6 text-slate-400">A warm, collaborative team that values care as much as craft.</p></div><div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5"><Sparkles className="text-amber-200" size={22} /><h2 className="mt-4 font-semibold text-white">Keep growing</h2><p className="mt-2 text-sm leading-6 text-slate-400">Time, trust, and support to keep developing your practice.</p></div><div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5"><BriefcaseBusiness className="text-sky-300" size={22} /><h2 className="mt-4 font-semibold text-white">Make an impact</h2><p className="mt-2 text-sm leading-6 text-slate-400">Your work shapes real outcomes for students and families.</p></div></div>
+                <section className="mt-12"><div className="flex items-end justify-between gap-4"><div><p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300">Current openings</p><h2 className="mt-2 text-2xl font-semibold text-white">Find your place here.</h2></div><Link href="mailto:newlittleflower1@gmail.com" className="hidden text-sm text-emerald-200 hover:text-white sm:block">Talk to our team →</Link></div><div className="mt-5 grid gap-3">{openings.map((opening) => <article key={opening.title} className="flex flex-col justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-emerald-300/30 hover:bg-white/[0.05] sm:flex-row sm:items-center"><div><h3 className="font-semibold text-white">{opening.title}</h3><p className="mt-1 text-xs font-medium uppercase tracking-wider text-emerald-300">{opening.type}</p><p className="mt-3 max-w-2xl text-sm leading-6 text-slate-400">{opening.detail}</p></div><a href={`mailto:newlittleflower1@gmail.com?subject=${encodeURIComponent(opening.title)}`} className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-slate-200 hover:text-emerald-200">Apply now <ArrowUpRight size={15} /></a></article>)}</div></section>
+            </div>
+        </main>
+    );
+}
