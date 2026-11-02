@@ -7,5 +7,5 @@ router = DefaultRouter()
 router.register(r'students', StudentViewSet)
 
 urlpatterns = router.urls + [
-    path('dashboard/', StudentStats.as_view(), name='dashboard'),
+    path('students/dashboard/', StudentStats.as_view(), name='student-dashboard'),
 ]

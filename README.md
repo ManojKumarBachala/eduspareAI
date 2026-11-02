@@ -1,14 +1,18 @@
 edusphere-ai
 
-Quick start (backend):
+Quick start (backend, Python 3.10+; Python 3.13 tested):
 
-1. Create a Python virtual environment and activate it.
+1. Create and activate a Python virtual environment.
+
+```powershell
+py -3.13 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+On macOS or Linux:
 
 ```bash
-python -m venv .venv
-# Windows
-.\.venv\Scripts\Activate.ps1
-# macOS / Linux
+python3 -m venv .venv
 source .venv/bin/activate
 ```
 

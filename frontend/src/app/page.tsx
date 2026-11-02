@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import axios from "axios";
 
 import MainLayout from "../components/layout/MainLayout";
 import DashboardHeader from "../components/dashboard/DashboardHeader";
@@ -12,6 +11,7 @@ import QuickActions from "../components/dashboard/QuickActions";
 import FeeChart from "../components/dashboard/FeeChart";
 import UpdatesTicker from "../components/dashboard/UpdatesTicker";
 import SocialPlatforms from "../components/dashboard/SocialPlatforms";
+import { getDashboardStats } from "../services/dashboardService";
 
 interface DashboardStats {
   total_students: number;
@@ -31,14 +31,13 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/dashboard/")
-      .then((res) => {
+    getDashboardStats()
+      .then((data) => {
         setStats({
-          total_students: res.data.total_students ?? 0,
-          total_teachers: res.data.total_teachers ?? 0,
-          total_books: res.data.total_books ?? 0,
-          total_vehicles: res.data.total_vehicles ?? 0,
+          total_students: data.total_students ?? 0,
+          total_teachers: data.total_teachers ?? 0,
+          total_books: data.total_books ?? 0,
+          total_vehicles: data.total_vehicles ?? 0,
         });
 
         setLoading(false);
