@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../services/api";
 
 interface Book {
     id: number;
@@ -16,8 +16,8 @@ export default function LibraryPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios
-            .get("http://127.0.0.1:8000/api/books/")
+        api
+            .get("/books/")
             .then((res) => {
                 setBooks(res.data);
                 setLoading(false);
