@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EduSpare AI frontend
 
-## Getting Started
+This directory contains the Next.js web application for EduSpare AI. For
+project architecture, backend setup, API overview, security guidance, and
+production deployment instructions, see the [repository README](../README.md)
+and [deployment runbook](../docs/DEPLOYMENT.md).
 
-First, run the development server:
+## Requirements
+
+- Node.js compatible with the Next.js version in `package.json`.
+- npm.
+- The Django API running locally or a reachable API service.
+
+## Local development
+
+From this directory, install the locked dependencies and start the dev server:
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). By default, the Next.js
+rewrite forwards `/api/*` requests to `http://127.0.0.1:8000`; start the Django
+backend separately from the repository root.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Copy `.env.example` to `.env.local` to override the browser-side API base URL:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```dotenv
+NEXT_PUBLIC_API_BASE_URL=http://127.0.0.1:8000/api
+```
 
-## Learn More
+For local server-side rewrites, set `API_SERVER_URL` to the backend origin when
+you need to override the default. Do not put secrets in `NEXT_PUBLIC_*`
+variables; they are embedded into client-side code.
 
-To learn more about Next.js, take a look at the following resources:
+## Commands
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev    # Start the development server
+npm run lint   # Run ESLint
+npm run build  # Create a production build
+npm run start  # Serve the production build
+```
